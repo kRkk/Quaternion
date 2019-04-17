@@ -349,6 +349,24 @@ Item {
                 }
             }
             Loader {
+                active: eventType == "video"
+
+                anchors.top: textField.bottom
+                anchors.left: textField.left
+                anchors.right: textField.right
+
+                sourceComponent: VideoContent {
+                    property var info:
+                        !progressInfo.isUpload && !progressInfo.active &&
+                        content.info && content.info.thumbnail_info
+                        ? content.info.thumbnail_info
+                        : content.info
+                    thumbnailSize: if (info) { Qt.size(info.w, info.h) }
+                    maxHeight: chatView.height - textField.height -
+                               authorLabel.height * !xchatStyle
+                }
+            }
+            Loader {
                 active: eventType == "file"
 
                 anchors.top: textField.bottom

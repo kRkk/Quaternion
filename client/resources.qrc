@@ -11,6 +11,7 @@
         <file alias="busy.gif">../icons/busy_16x16.gif</file>
         <file>qml/Attachment.qml</file>
         <file>qml/ImageContent.qml</file>
+        <file>qml/VideoContent.qml</file>
         <file>qml/FileContent.qml</file>
         <file>qml/TimelineItem.qml</file>
         <file>qml/ActiveLabel.qml</file>
