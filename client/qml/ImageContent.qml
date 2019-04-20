@@ -8,6 +8,8 @@ Attachment {
     property var maxHeight
     property bool autoload
 
+    onDownloadedChanged: if (downloaded) transferProgress.height = 0
+
     Image {
         readonly property real imageMaxHeight: maxHeight - buttons.height
 
@@ -44,9 +46,18 @@ Attachment {
                 room.downloadFile(eventId)
     }
 
+    ProgressBar {
+        id: transferProgress
+        visible: progressInfo && progressInfo.started
+        anchors.top: imageContent.bottom
+
+        value: progressInfo ? progressInfo.progress / progressInfo.total : -1
+        indeterminate: !progressInfo || progressInfo.progress < 0
+    }
+
     RowLayout {
         id: buttons
-        anchors.top: imageContent.bottom
+        anchors.top: transferProgress.bottom
         width: parent.width
         spacing: 2
 
