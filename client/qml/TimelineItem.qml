@@ -92,7 +92,7 @@ Item {
 
     Connections {
         target: controller
-        onShowDetails: {
+        function onShowDetails(currentIndex) {
             if (currentIndex === index) {
                 showingDetails = !showingDetails
                 if (!settings.enable_animations) {
@@ -102,7 +102,7 @@ Item {
                     detailsAnimation.start()
             }
         }
-        onAnimateMessage: {
+        function onAnimateMessage(currentIndex) {
             if (currentIndex === index)
                 blinkAnimation.start()
         }

@@ -316,14 +316,17 @@ Rectangle {
             }
             Connections {
                 target: controller
-                onPageUpPressed:
+                function onPageUpPressed() {
                     chatView.scrollUp(chatView.height
                                       - sectionBanner.childrenRect.height)
-
-                onPageDownPressed:
+                }
+                function onPageDownPressed() {
                     chatView.scrollDown(chatView.height
                                         - sectionBanner.childrenRect.height)
-                onScrollViewTo: chatView.positionViewAtIndex(currentIndex, ListView.Contain)
+                }
+                function onScrollViewTo(currentIndex) {
+                    chatView.positionViewAtIndex(currentIndex, ListView.Contain)
+                }
             }
 
             Component.onCompleted: {
